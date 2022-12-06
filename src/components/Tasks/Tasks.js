@@ -4,12 +4,15 @@ import "./Tasks.css";
 import TaskListDnD from "../TaskListDnD/TaskListDnD";
 import Mock from "../Mock/Mock";
 
+
+
 function Tasks() {
   const [modalActive, setModalActive] = useState(false);
   const [modalEditActive, setModalEditActive] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [tasks, setTasks] = useState([]);
   const [edit, setEdit] = useState("");
+  
 
   const month = [
     "Jan",

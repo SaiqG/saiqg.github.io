@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import TaskListDnD from "./TaskListDnD";
 
 function SingleTask({
   title,
@@ -12,19 +13,21 @@ function SingleTask({
   edit,
   prio,
 }) {
-  const [ed, setEd] = useState("");
-  const handleEdit = (e, id) => {
+  const [ide, setIde] = useState("");
+  const handleEdit = (e, ident) => {
     e.preventDefault();
     e.stopPropagation();
     setActive(true);
-    setEd(id);
+    setIde(ident);
   };
 
   useEffect(() => {
-    if (edit !== "")
+    if (edit !== task.title && edit !== '' && id === ide) {
       setTask(
-        task.map((task) => (task.id === ed ? { ...task, title: edit } : task))
+        task.map((task) => (task.id === ide ? { ...task, title: edit } : task))
       );
+      setIde("");
+    }
   }, [edit]);
 
   const handleDelete = (e, id) => {
@@ -41,7 +44,7 @@ function SingleTask({
         task.id === id ? { ...task, prio: e.currentTarget.value } : task
       )
     );
-    console.log(Math.round((new Date() - task.filter(task => task.id === id)[0].date)/3600000))
+
   };
 
   return (
@@ -51,11 +54,24 @@ function SingleTask({
         onClick={(e) => handleSelect(e, id)}
         className={done ? "select hide" : "select"}
       >
-        <option selected={prio === "none" ? true :false} value="none">None</option>
-        <option selected={prio === "chill" ? true :false} value="chill">Chill</option>
-        <option selected={prio === "rush" ? true :false} value="rush">Rush!</option>
+        <option selected={prio === "none" ? true : false} value="none">
+          None
+        </option>
+        <option selected={prio === "chill" ? true : false} value="chill">
+          Chill
+        </option>
+        <option selected={prio === "rush" ? true : false} value="rush">
+          Rush!
+        </option>
       </select>
-      <div className="creation__date">{done ?  `Finished in ${Math.round((new Date() - task.filter(task => task.id === id)[0].date)/3600000)}hours` : date}</div>
+      <div className="creation__date">
+        {done
+          ? `Finished in ${Math.round(
+              (new Date() - task.filter((task) => task.id === id)[0].date) /
+                3600000
+            )}hours`
+          : date}
+      </div>
       <img
         onClick={(e) => handleEdit(e, id)}
         className="icon__edit"

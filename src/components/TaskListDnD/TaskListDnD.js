@@ -3,10 +3,28 @@ import { useNavigate } from "react-router-dom";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import SingleTask from "./SingleTask";
 
+const filterTasks = (searchText, list) => {
+  if (!searchText) {
+      return list;
+  }
+  return list.filter(({ id }) =>
+      id.toLowerCase().includes(searchText.toLowerCase())
+      
+  );
+}
+
+
+
 function TaskListDnD({ tasks, setActive, edit }) {
   const [queue, setQueue] = useState([]);
   const [development, setDevelopment] = useState([]);
   const [done, setDone] = useState([]);
+  const [searchInput, setSearchInput] = useState();
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    setSearchInput(e.currentTarget.value)
+  }
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("queue")))
@@ -83,7 +101,8 @@ function TaskListDnD({ tasks, setActive, edit }) {
     navigate(`/${id}`);
   };
 
-  return (
+  return (<>
+    <input className="search__input" type="text" placeholder="Search task" value={searchInput} onChange={(e)=> handleChange(e)}/>
     <div className="tasks__container">
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="tasks__queue__container">
@@ -96,7 +115,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {queue.map(({ id, title, prio, startdate }, index) => {
+                {filterTasks(searchInput, queue).map(({ id, title, prio, startdate }, index) => {
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
@@ -142,7 +161,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {development.map(({ id, title, prio, startdate }, index) => {
+                {filterTasks(searchInput,development).map(({ id, title, prio, startdate }, index) => {
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
@@ -188,7 +207,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
                 {...provided.droppableProps}
                 ref={provided.innerRef}
               >
-                {done.map(({ id, title, prio, startdate }, index) => {
+                {filterTasks(searchInput,done).map(({ id, title, prio, startdate }, index) => {
                   return (
                     <Draggable key={id} draggableId={id} index={index}>
                       {(provided) => (
@@ -227,6 +246,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
         </div>
       </DragDropContext>
     </div>
+    </>
   );
 }
 

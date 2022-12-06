@@ -1,0 +1,52 @@
+.header__container {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 150px;
+  margin: 15px;
+  padding: 15px;
+  cursor: default;
+}
+
+.header__main {
+  font-size: 80px;
+}
+
+.header__after {
+  font-size: 60px;
+  font-family: "Dancing Script", cursive;
+  color: #32d4ad;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+}
+
+@media (width < 1000px){
+  .header__main {
+    font-size: 50px;
+  } 
+  .header__after{
+    font-size: 30px;
+  }
+  .header__container{
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  .header{
+    height: 60px;
+
+  }
+}

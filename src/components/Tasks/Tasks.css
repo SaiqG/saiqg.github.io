@@ -10,6 +10,7 @@
   column-gap: 1%;
   padding: 2px;
   text-align: center;
+  transition: 0.3s ;
   
 }
 
@@ -33,7 +34,7 @@
 }
 
 .tasks__container li:hover {
-  scale: 1.02;
+  scale: 1.03;
   border: none;
 }
 

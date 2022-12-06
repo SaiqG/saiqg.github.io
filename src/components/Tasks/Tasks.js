@@ -77,7 +77,7 @@ function Tasks() {
             autoFocus
             placeholder="What we gonna do?"
           />
-          <button>sub</button>
+          <button>submit</button>
         </form>
         <Mock />
       </Modal>
@@ -97,7 +97,7 @@ function Tasks() {
             autoFocus
             placeholder="Plans changed?"
           />
-          <button>sub</button>
+          <button>submit</button>
         </form>
       </Modal>
     </>

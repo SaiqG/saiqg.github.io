@@ -23,8 +23,8 @@ window.location.reload(false);
 function Mock() {
   return (
     <div>
-        <button onClick={() => loadMock()}>Load mock</button>
-        <button onClick={() => cleanAll()}>Clean all</button>
+        <button onClick={() => loadMock()}>мок</button>
+        <button onClick={() => cleanAll()}>Очистить</button>
     </div>
   )
 }

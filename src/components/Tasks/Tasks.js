@@ -15,18 +15,18 @@ function Tasks() {
   
 
   const month = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь",
   ];
   
   const handleChange = (e) => {
@@ -52,7 +52,7 @@ function Tasks() {
   return (
     <>
       <label className="create__new__task" onClick={() => setModalActive(true)}>
-        Create task
+        Новая задача
         <button className="create__new__task__btn"></button>
       </label>
       <TaskListDnD
@@ -75,9 +75,9 @@ function Tasks() {
             type="text"
             onChange={handleChange}
             autoFocus
-            placeholder="What we gonna do?"
+            placeholder="Что будем делать?"
           />
-          <button>submit</button>
+          <button>создать</button>
         </form>
         <Mock />
       </Modal>
@@ -95,9 +95,9 @@ function Tasks() {
             type="text"
             onChange={handleChange}
             autoFocus
-            placeholder="Plans changed?"
+            placeholder="Корректировать"
           />
-          <button>submit</button>
+          <button>создать</button>
         </form>
       </Modal>
     </>

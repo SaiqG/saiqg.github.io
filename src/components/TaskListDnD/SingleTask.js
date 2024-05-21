@@ -5,6 +5,7 @@ function SingleTask({
   title,
   id,
   task,
+  curDate,
   setTask,
   done,
   index,
@@ -55,21 +56,21 @@ function SingleTask({
         className={done ? "select hide" : "select"}
       >
         <option selected={prio === "none" ? true : false} value="none">
-          None
+          -
         </option>
         <option selected={prio === "chill" ? true : false} value="chill">
-          Chill
+          Обычно
         </option>
         <option selected={prio === "rush" ? true : false} value="rush">
-          Rush!
+          Срочно!
         </option>
       </select>
       <div className="creation__date">
         {done
-          ? `Finished in ${Math.round(
-              (new Date() - task.filter((task) => task.id === id)[0].date) /
+          ? `Выполнено за ${Math.round(
+              (curDate - task.filter((task) => task.id === id)[0].date) /
                 3600000
-            )}hours`
+            )}ч.`
           : date}
       </div>
       <img

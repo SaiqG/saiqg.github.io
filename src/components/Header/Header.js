@@ -6,7 +6,7 @@ function Header() {
     <div className="header__container">
       <header className="header">
         <h1 className="header__main">ToDo</h1>
-        <h3 className="header__after">List</h3>
+        <h3 className="header__after">SAP</h3>
       </header>
     </div>
   );

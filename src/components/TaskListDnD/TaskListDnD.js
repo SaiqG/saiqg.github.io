@@ -106,7 +106,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
     <div className="tasks__container">
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="tasks__queue__container">
-          <h1>Queue</h1>
+          <h1>Очередь</h1>
           <div className="t__scroll">
           <Droppable droppableId="queueId">
             {(provided) => (
@@ -152,7 +152,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
           </div>
         </div>
         <div className="tasks__development__container">
-          <h1>Development</h1>
+          <h1>Рассмотрение</h1>
           <div className="t__scroll">
           <Droppable droppableId="developmentId">
             {(provided) => (
@@ -198,7 +198,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
           </div>
         </div>
         <div className="tasks__done__container">
-          <h1>Done</h1>
+          <h1>Обработано</h1>
           <div className="t__scroll">
           <Droppable droppableId="doneId">
             {(provided) => (
@@ -225,6 +225,7 @@ function TaskListDnD({ tasks, setActive, edit }) {
                             id={id}
                             title={title}
                             date={startdate}
+                            curDate={new Date()}
                             index={parseInt(id.match(/\d+/))}
                             task={done}
                             setTask={setDone}
